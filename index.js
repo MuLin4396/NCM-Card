@@ -67,7 +67,7 @@ const {
             svgContent = Buffer.from(
                 `<svg width="450" height="520" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <foreignObject width="450" height="520">
-                        <div xmlns="http://www.w3.org/1999/xhtml" class="container" style="padding: 5px; text-align: left;">
+                        <div xmlns="http://www.w3.org/1999/xhtml" class="container" style="padding: 5px; text-align: left; background-color: #ffffff">
                         <style>
                             * {
                                 box-sizing: border-box;
