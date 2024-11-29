@@ -7,10 +7,6 @@
 <div align="center">用于在 Github Profile 上展示本周的网易云音乐听歌记录</div>
 
 <div align="center">
-  <img src="card.svg">
-</div>
-
-<div align="center">
   <h1>NCM-Card</h1>
 </div>
 
