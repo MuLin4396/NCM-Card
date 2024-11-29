@@ -186,7 +186,7 @@ const {
                                         </div>
                                     `)).then(items => items.join(''))}
                                 </div>
-                                <div class="generated-time">${generatedTime}</div>
+                                
                             </div>
                         </div>
                     </foreignObject>
@@ -316,7 +316,7 @@ const {
                                     </div>
                                 `)).then(items => items.join(''))}
                             </div>
-                            <div class="generated-time">${generatedTime}</div>
+                            
                         </div>
                     </div>
                 </foreignObject>
