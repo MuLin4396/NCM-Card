@@ -1,3 +1,7 @@
+### 深色
+<div align="center"><img src="card-dark.svg"></div>
+
+### 浅色
 <div align="center"><img src="card.svg"></div>
 
 <div align="center"><h1>NCM-Card</h1></div>
