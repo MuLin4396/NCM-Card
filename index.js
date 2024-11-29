@@ -306,14 +306,14 @@ const {
             auth: GH_TOKEN,
         });
 
-        const {
-            data: {sha: svgSha}
-        } = await octokit.git.createBlob({
-            owner: AUTHOR,
-            repo: REPO,
-            content: svgContent,
-            encoding: "base64"
-        });
+        // const {
+        //     data: {sha: svgSha}
+        // } = await octokit.git.createBlob({
+        //     owner: AUTHOR,
+        //     repo: REPO,
+        //     content: svgContent,
+        //     encoding: "base64"
+        // });
 
         // const {
         //     data: {sha: svgDarkSha}
