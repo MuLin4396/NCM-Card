@@ -182,8 +182,8 @@ const {
 
         // 生成深色模式的 SVG
         let svgContentDark = Buffer.from(
-            `<svg width="450" height="${200 + 100 * songsData.length}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <foreignObject width="450" height="${200 + 100 * songsData.length}">
+            `<svg width="450" height="${20 + 100 * songsData.length}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <foreignObject width="450" height="${20 + 100 * songsData.length}">
                     <div xmlns="http://www.w3.org/1999/xhtml" class="container" style="padding: 5px; text-align: left; background-color: #1e1e1e; color: #ffffff;">
                     <style>
                         * {
@@ -306,23 +306,23 @@ const {
             auth: GH_TOKEN,
         });
 
-        // const {
-        //     data: {sha: svgSha}
-        // } = await octokit.git.createBlob({
-        //     owner: AUTHOR,
-        //     repo: REPO,
-        //     content: svgContent,
-        //     encoding: "base64"
-        // });
+        const {
+            data: {sha: svgSha}
+        } = await octokit.git.createBlob({
+            owner: AUTHOR,
+            repo: REPO,
+            content: svgContent,
+            encoding: "base64"
+        });
 
-        // const {
-        //     data: {sha: svgDarkSha}
-        // } = await octokit.git.createBlob({
-        //     owner: AUTHOR,
-        //     repo: REPO,
-        //     content: svgContentDark,
-        //     encoding: "base64"
-        // });
+        const {
+            data: {sha: svgDarkSha}
+        } = await octokit.git.createBlob({
+            owner: AUTHOR,
+            repo: REPO,
+            content: svgContentDark,
+            encoding: "base64"
+        });
 
         const commits = await octokit.repos.listCommits({
             owner: AUTHOR,
@@ -380,6 +380,6 @@ const {
 
         console.log('SVG 文件已生成并上传到 GitHub');
     } catch (error) {
-        console.error(`执行过程中发生错误：${error.message}`);
+        console.error(`上传GitHub执行过程中发生错误：${error.message}`);
     }
 })();
