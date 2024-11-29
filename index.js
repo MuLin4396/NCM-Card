@@ -1,11 +1,11 @@
 require('dotenv').config();
-const { Octokit } = require('@octokit/rest');
-const { user_record, user_account } = require('NeteaseCloudMusicApi');
+const {Octokit} = require('@octokit/rest');
+const {user_record, user_account} = require('NeteaseCloudMusicApi');
 const axios = require('axios').default;
 const fs = require('fs');
 
 async function getBase64(url) {
-    const response = await axios.get(url, { responseType: 'arraybuffer' });
+    const response = await axios.get(url, {responseType: 'arraybuffer'});
     return Buffer.from(response.data, 'binary').toString('base64');
 }
 
@@ -58,7 +58,7 @@ const {
             const playCount = song?.playCount || 0;
             const songCoverUrl = song?.song?.al?.picUrl + "?param=100y100"; // 小封面
 
-            songsData.push({ rank: index + 1, songId, songName, songAuthors, playCount, songCoverUrl });
+            songsData.push({rank: index + 1, songId, songName, songAuthors, playCount, songCoverUrl});
         }
 
         let svgContent = "";
@@ -307,7 +307,7 @@ const {
         });
 
         const {
-            data: { sha: svgSha }
+            data: {sha: svgSha}
         } = await octokit.git.createBlob({
             owner: AUTHOR,
             repo: REPO,
@@ -315,14 +315,14 @@ const {
             encoding: "base64"
         });
 
-        const {
-            data: { sha: svgDarkSha }
-        } = await octokit.git.createBlob({
-            owner: AUTHOR,
-            repo: REPO,
-            content: svgContentDark,
-            encoding: "base64"
-        });
+        // const {
+        //     data: {sha: svgDarkSha}
+        // } = await octokit.git.createBlob({
+        //     owner: AUTHOR,
+        //     repo: REPO,
+        //     content: svgContentDark,
+        //     encoding: "base64"
+        // });
 
         const commits = await octokit.repos.listCommits({
             owner: AUTHOR,
@@ -331,7 +331,7 @@ const {
         const lastSha = commits.data[0].sha;
 
         const {
-            data: { sha: treeSHA }
+            data: {sha: treeSHA}
         } = await octokit.git.createTree({
             owner: AUTHOR,
             repo: REPO,
@@ -353,7 +353,7 @@ const {
         });
 
         const {
-            data: { sha: newSHA }
+            data: {sha: newSHA}
         } = await octokit.git.createCommit({
             owner: AUTHOR,
             repo: REPO,
@@ -373,7 +373,7 @@ const {
         const result = await octokit.git.updateRef({
             owner: AUTHOR,
             repo: REPO,
-            ref: "heads/main",
+            ref: "heads/master",
             sha: newSHA,
         });
         console.log(result);
