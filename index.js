@@ -66,7 +66,7 @@ const {
             // 生成SVG内容
             svgContent = Buffer.from(
                 `<svg width="450" height="${20 + 100 * songsData.length}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <foreignObject width="450" height="${20 + 100 * songsData.length}">
+                    <foreignObject width="450" height="520">
                         <div xmlns="http://www.w3.org/1999/xhtml" class="container" style="padding: 5px; text-align: left;">
                         <style>
                             * {
@@ -183,7 +183,7 @@ const {
         // 生成深色模式的 SVG
         let svgContentDark = Buffer.from(
             `<svg width="450" height="${20 + 100 * songsData.length}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <foreignObject width="450" height="${20 + 100 * songsData.length}">
+                <foreignObject width="450" height="520">
                     <div xmlns="http://www.w3.org/1999/xhtml" class="container" style="padding: 5px; text-align: left; background-color: #1e1e1e; color: #ffffff;">
                     <style>
                         * {
