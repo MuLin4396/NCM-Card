@@ -28,5 +28,5 @@ jobs:
           REFS: ${{ github.ref }}
           USER_ID: 418066156
           USER_TOKEN: ${{ secrets.USER_TOKEN }}
-          REPO: "MCN-Card"
+          REPO: "NCM-Card"
           AUTHOR: "ClozyA"
