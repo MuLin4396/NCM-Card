@@ -68,8 +68,8 @@ const {
         try {
             // 生成SVG内容
             svgContent = Buffer.from(
-                `<svg width="450" height="${200 + 100 * songsData.length}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <foreignObject width="450" height="${200 + 100 * songsData.length}">
+                `<svg width="450" height="${20 + 100 * songsData.length}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <foreignObject width="450" height="${20 + 100 * songsData.length}">
         <div xmlns="http://www.w3.org/1999/xhtml" class="container" style="padding: 5px; text-align: left;">
         <style>
             * {
@@ -95,15 +95,14 @@ const {
             }
 
             .card {
-text-align: left;
-display: flex;
-flex-direction: column;
-width: 450px;
-margin: 0 auto;
-gap: 20px;
-display: flex;
-flex-direction: column;
-                
+                text-align: left;
+                display: flex;
+                flex-direction: column;
+                width: 450px;
+                margin: 0 auto;
+                gap: 20px;
+                display: flex;
+                flex-direction: column;
                 overflow: hidden;
                 padding: 10px;
             }
@@ -132,12 +131,12 @@ flex-direction: column;
             }
 
             .song-item {
-position: relative;
-display: flex;
-align-items: center;
-margin-bottom: 20px;
-display: flex;
-justify-content: space-between;
+                position: relative;
+                display: flex;
+                align-items: center;
+                margin-bottom: 20px;
+                display: flex;
+                justify-content: space-between;
             }
 
             .song-item::after {
