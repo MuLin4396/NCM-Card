@@ -1,11 +1,11 @@
 require('dotenv').config();
-const { Octokit } = require('@octokit/rest');
-const { user_record, user_account } = require('NeteaseCloudMusicApi');
+const {Octokit} = require('@octokit/rest');
+const {user_record, user_account} = require('NeteaseCloudMusicApi');
 const axios = require('axios').default;
 const fs = require('fs');
 
 async function getBase64(url) {
-    const response = await axios.get(url, { responseType: 'arraybuffer' });
+    const response = await axios.get(url, {responseType: 'arraybuffer'});
     return Buffer.from(response.data, 'binary').toString('base64');
 }
 
@@ -58,15 +58,15 @@ const {
             const playCount = song?.playCount || 0;
             const songCoverUrl = song?.song?.al?.picUrl + "?param=100y100"; // 小封面
 
-            songsData.push({ rank: index + 1, songId, songName, songAuthors, playCount, songCoverUrl });
+            songsData.push({rank: index + 1, songId, songName, songAuthors, playCount, songCoverUrl});
         }
 
         let svgContent = "";
         try {
             // 生成SVG内容
             svgContent = Buffer.from(
-                `<svg width="450" height="${20 + 100 * songsData.length}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <foreignObject width="450" height="${20 + 100 * songsData.length}">
+                `<svg width="450" height="520" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <foreignObject width="450" height="520">
                         <div xmlns="http://www.w3.org/1999/xhtml" class="container" style="padding: 5px; text-align: left;">
                         <style>
                             * {
@@ -182,8 +182,8 @@ const {
 
         // 生成深色模式的 SVG
         let svgContentDark = Buffer.from(
-            `<svg width="450" height="${200 + 100 * songsData.length}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <foreignObject width="450" height="${200 + 100 * songsData.length}">
+            `<svg width="450" height="520" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <foreignObject width="450" height="520">
                     <div xmlns="http://www.w3.org/1999/xhtml" class="container" style="padding: 5px; text-align: left; background-color: #1e1e1e; color: #ffffff;">
                     <style>
                         * {
@@ -307,7 +307,7 @@ const {
         });
 
         const {
-            data: { sha: svgSha }
+            data: {sha: svgSha}
         } = await octokit.git.createBlob({
             owner: AUTHOR,
             repo: REPO,
@@ -316,7 +316,7 @@ const {
         });
 
         const {
-            data: { sha: svgDarkSha }
+            data: {sha: svgDarkSha}
         } = await octokit.git.createBlob({
             owner: AUTHOR,
             repo: REPO,
@@ -331,7 +331,7 @@ const {
         const lastSha = commits.data[0].sha;
 
         const {
-            data: { sha: treeSHA }
+            data: {sha: treeSHA}
         } = await octokit.git.createTree({
             owner: AUTHOR,
             repo: REPO,
@@ -353,7 +353,7 @@ const {
         });
 
         const {
-            data: { sha: newSHA }
+            data: {sha: newSHA}
         } = await octokit.git.createCommit({
             owner: AUTHOR,
             repo: REPO,
@@ -373,13 +373,13 @@ const {
         const result = await octokit.git.updateRef({
             owner: AUTHOR,
             repo: REPO,
-            ref: "heads/main",
+            ref: "heads/master",
             sha: newSHA,
         });
         console.log(result);
 
         console.log('SVG 文件已生成并上传到 GitHub');
     } catch (error) {
-        console.error(`执行过程中发生错误：${error.message}`);
+        console.error(`上传GitHub执行过程中发生错误：${error.message}`);
     }
 })();
