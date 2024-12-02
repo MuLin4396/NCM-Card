@@ -24,9 +24,9 @@ jobs:
       - name: index.js
         run: node index.js
         env:
-          GH_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.MULIN4396 }}
           REFS: ${{ github.ref }}
-          USER_ID: 418066156
-          USER_TOKEN: ${{ secrets.USER_TOKEN }}
+          USER_ID: 1540705958
+          USER_TOKEN: ${{ secrets.MUSIC_U }}
           REPO: "NCM-Card"
-          AUTHOR: "ClozyA"
+          AUTHOR: "MuLin4396"
